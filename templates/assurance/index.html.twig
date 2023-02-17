@@ -1,0 +1,48 @@
+
+{%extends 'admin/Base.html.twig'%}
+
+
+
+
+{% block body %}
+<div style="margin-right:50px;margin-left:350px">
+<title>Assurance </title>
+    <h1>Assurance </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Region</th>
+                <th>Telephone</th>
+                <th>Mail</th>
+                <th>Adresse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for assurance in assurances %}
+            <tr>
+                <td>{{ assurance.id }}</td>
+                <td>{{ assurance.nom }}</td>
+                <td>{{ assurance.region }}</td>
+                <td>{{ assurance.telephone }}</td>
+                <td>{{ assurance.mail }}</td>
+                <td>{{ assurance.adresse }}</td>
+                <td>
+                    <a href="{{ path('app_assurance_show', {'id': assurance.id}) }}">show</a>
+                    <a href="{{ path('app_assurance_edit', {'id': assurance.id}) }}">edit</a>
+                </td>
+            </tr>
+         {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_assurance_new') }}">Create new</a>
+    </div>
+{% endblock %}
