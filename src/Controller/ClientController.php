@@ -81,5 +81,12 @@ class ClientController extends AbstractController
             'controller_name' => 'ClientController',
         ]);
     }
+    #[Route('/afficher', name: 'app_assurance_afficher')]
+    public function afficher(AssuranceRepository $assuranceRepository): Response
+    {
+        return $this->render('client/afficher.html.twig', [
+            'assurances' => $assuranceRepository->findAll(),
+        ]);
+    }
 
 }

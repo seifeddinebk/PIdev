@@ -76,11 +76,11 @@ class AssuranceController extends AbstractController
         return $this->redirectToRoute('app_assurance_index', [], Response::HTTP_SEE_OTHER);
     }
 
-   /* #[Route('/afficher', name: 'app_assurance_afficher')]
+    #[Route('/afficher', name: 'app_assurance_afficher')]
     public function afficher(AssuranceRepository $assuranceRepository): Response
     {
         return $this->render('assurance/afficher.html.twig', [
             'assurances' => $assuranceRepository->findAll(),
         ]);
-    }*/
+    }
 }

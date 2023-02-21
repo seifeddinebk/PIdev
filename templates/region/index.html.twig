@@ -1,0 +1,40 @@
+{%extends 'admin/Base.html.twig'%}
+
+
+
+{% block body %}
+<div style="margin-right:50px;margin-left:350px">
+<title>Region </title>
+    <h1>Region </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Region</th>
+                <th>Adresse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for region in regions %}
+            <tr>
+                <td>{{ region.id }}</td>
+                <td>{{ region.region }}</td>
+                <td>{{ region.adresse }}</td>
+                <td>
+                    <a href="{{ path('app_region_show', {'id': region.id}) }}">show</a>
+                    <a href="{{ path('app_region_edit', {'id': region.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_region_new') }}">Create new</a>
+    </div>
+{% endblock %}

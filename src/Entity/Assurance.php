@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\AssuranceRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,9 +18,7 @@ class Assurance
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[Assert\NotBlank(message:"il est obligatoire d'ajouter une region a l assurance")]
-    #[ORM\Column(length: 255)]
-    private ?string $region = null;
+ 
 
   
     #[Assert\NotBlank(message:"il est obligatoire de mettre un numero de telephone")]
@@ -32,9 +31,14 @@ class Assurance
     #[ORM\Column(length: 255)]
     private ?string $mail = null;
 
-    #[Assert\NotBlank(message:"il est obligatoire d'ajouter une adresse a l assurance")]
-    #[ORM\Column(length: 255)]
-    private ?string $adresse = null;
+    #[ORM\ManyToOne(inversedBy: 'id_assurance')]
+    private ?Region $region = null;
+
+    #[ORM\ManyToOne(inversedBy: 'assurances')]
+    private ?Region $Region = null;
+
+    
+  
 
     public function getId(): ?int
     {
@@ -53,17 +57,7 @@ class Assurance
         return $this;
     }
 
-    public function getRegion(): ?string
-    {
-        return $this->region;
-    }
-
-    public function setRegion(string $region): self
-    {
-        $this->region = $region;
-
-        return $this;
-    }
+   
 
     public function getTelephone(): ?int
     {
@@ -89,15 +83,34 @@ class Assurance
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getRegion(): ?Region
+    {
+        return $this->Region;
+    }
+
+    public function setRegion(?Region $Region): self
+    {
+        $this->Region = $Region;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?Region
     {
         return $this->adresse;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setAdresse(?Region $adresse): self
     {
         $this->adresse = $adresse;
 
         return $this;
     }
+
+
+  
+    
+
+  
+
 }

@@ -14,10 +14,11 @@
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
-                <th>Region</th>
+        
                 <th>Telephone</th>
                 <th>Mail</th>
-                <th>Adresse</th>
+                <th>Region</th>
+                 <th>adresse</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,10 +27,11 @@
             <tr>
                 <td>{{ assurance.id }}</td>
                 <td>{{ assurance.nom }}</td>
-                <td>{{ assurance.region }}</td>
+              
                 <td>{{ assurance.telephone }}</td>
                 <td>{{ assurance.mail }}</td>
-                <td>{{ assurance.adresse }}</td>
+                <td>{{ assurance.region }}</td>
+                <td>{{ assurance.region.adresse }}</td>
                 <td>
                     <a href="{{ path('app_assurance_show', {'id': assurance.id}) }}">show</a>
                     <a href="{{ path('app_assurance_edit', {'id': assurance.id}) }}">edit</a>
