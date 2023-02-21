@@ -39,6 +39,8 @@ class AssuranceRepository extends ServiceEntityRepository
         }
     }
 
+    
+
 //    /**
 //     * @return Assurance[] Returns an array of Assurance objects
 //     */

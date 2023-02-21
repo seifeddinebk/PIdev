@@ -19,7 +19,7 @@
                 <th>Mail</th>
                 <th>Region</th>
                  <th>adresse</th>
-                <th>actions</th>
+               
             </tr>
         </thead>
         <tbody>
@@ -32,10 +32,7 @@
                 <td>{{ assurance.mail }}</td>
                 <td>{{ assurance.region }}</td>
                 <td>{{ assurance.region.adresse }}</td>
-                <td>
-                    <a href="{{ path('app_assurance_show', {'id': assurance.id}) }}">show</a>
-                    <a href="{{ path('app_assurance_edit', {'id': assurance.id}) }}">edit</a>
-                </td>
+               
             </tr>
          {% else %}
             <tr>
@@ -43,8 +40,8 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+      </table>
 
-    <a href="{{ path('app_assurance_new') }}">Create new</a>
+        
     </div>
 {% endblock %}

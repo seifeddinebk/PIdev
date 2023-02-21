@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Assurance;
+use App\Form\AssuranceType;
+use App\Repository\AssuranceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 #[Route('/Client')]
 class ClientController extends AbstractController
 {
