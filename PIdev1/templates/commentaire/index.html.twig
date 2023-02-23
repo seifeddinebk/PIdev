@@ -1,0 +1,45 @@
+
+
+{% extends 'admin/Base.html.twig' %}
+{% block title %}
+<title>Commentaire index</title>
+{% endblock %}
+
+{% block body %}
+<div style="margin-left: 500px; margin-top:100px; margin-right:200px; padding:50px;"> 
+    <h1> Liste des commentaires </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IdUser</th>
+                <th>Contenu</th>
+                <th>DateCommentaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commentaire in commentaires %}
+            <tr>
+                <td>{{ commentaire.id }}</td>
+                <td>{{ commentaire.idUser }}</td>
+                <td>{{ commentaire.contenu }}</td>
+                <td>{{ commentaire.dateCommentaire ? commentaire.dateCommentaire|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a class=" btn btn-primary" href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}">Détails</a>
+                    <a class=" btn btn-warning" href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">Modifier</a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_commentaire_new') }}">Ajouter un commentaire</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}})}} 
+    {{form_label(form.titre,"Titre")}}
+    {{ form_widget(form.titre) }}
+    <span style="color: red">{{ form_errors(form.titre)}} </span>
+    </br>
+    <span style="color: black"> {{form_label(form.contenu,"Contenu")}}</span>
+    {{ form_widget(form.contenu) }}
+    <span style="color: red"> {{ form_errors(form.contenu)}} </span>
+    
+    </br>
+    <span style="color: black">  {{form_label(form.dateActualite,"Date de l'actualité")}}</span>
+    {{ form_widget(form.dateActualite) }}
+    </br>
+    {# {{ form_row(form.imageFile)}} #}
+     {{form_label(form.imageFile,"Image")}}
+    {{ form_widget(form.imageFile) }}
+     {{ form_errors(form.imageFile)}} 
+    
+    </br>
+    
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    
+{{ form_end(form) }}
+
+{# {% block javascripts %}
+{{ parent () }}
+<script>
+$('input[type="file"]').change(function (e) {
+    var fileName=e.target.files[0].name;
+    $('.custom-file-label').html(fileName);
+
+});
+</script>
+
+{% endblock %} #}

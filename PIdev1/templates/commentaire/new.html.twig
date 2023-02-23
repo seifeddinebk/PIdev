@@ -1,0 +1,15 @@
+
+{% extends 'admin/Base.html.twig'%}
+{% block title %}
+<title>New Commentaire</title>
+{% endblock %}
+
+{% block body %}
+<div style="margin-left: 500px; margin-top:100px; margin-right:200px; padding:50px;">
+    <h1>Create new Commentaire</h1>
+
+    {{ include('commentaire/_form.html.twig') }}
+
+    <a class="btn btn-secondary" href="{{ path('app_commentaire_index') }}">back to list</a>
+    </div>
+{% endblock %}
