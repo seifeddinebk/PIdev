@@ -21,6 +21,7 @@ class Assurance
  
 
   
+    #[Assert\Length(min: 8,minMessage: "CE n est pas un num" )]
     #[Assert\NotBlank(message:"il est obligatoire de mettre un numero de telephone")]
     #[Assert\Positive(message:"le numero doit etre positif")]
     #[ORM\Column]
@@ -36,6 +37,7 @@ class Assurance
     #[ORM\ManyToOne(inversedBy: 'id_assurance')]
     private ?Region $region = null;
 
+    
     #[Assert\NotBlank(message:"il est obligatoire de mettre la region")]
     #[ORM\ManyToOne(inversedBy: 'assurances')]
     private ?Region $Region = null;

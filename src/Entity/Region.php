@@ -16,11 +16,13 @@ class Region
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\Length(min: 4,minMessage: "CE n est pas une region existante" )]
     #[Assert\NotBlank(message:"il est obligatoire d'ajouter une region")]
     #[ORM\Column(length: 255)]
     private ?string $region = null;
 
 
+    #[Assert\Length(min: 2,minMessage: "Cette adresse n existe pas" )]
     #[Assert\NotBlank(message:"il est obligatoire d'ajouter une adresse")]
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
