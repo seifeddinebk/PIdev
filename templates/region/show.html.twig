@@ -1,33 +1,45 @@
-{%extends 'admin/Base.html.twig'%}
-
-
+{% extends 'admin/Base.html.twig'%}
 
 {% block body %}
-<div style="margin-right:50px;margin-left:350px">
-<title>Region</title>
-    <h1>Region</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ region.id }}</td>
-            </tr>
-            <tr>
-                <th>Region</th>
-                <td>{{ region.region }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ region.adresse }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_region_index') }}">back to list</a>
+<div style='margin-left: 25% ;'>
+    <h1>region</h1>
 
-    <a href="{{ path('app_region_edit', {'id': region.id}) }}">edit</a>
+    <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 150px;">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <table class="card" >
+                            <tbody>
+                                <tr>
+                                    <th >Id</th>
+                                    <td >{{ region.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>nom</th>
+                                    <td>{{region.region }}</td>
+                                </tr>
+                                <tr>
+                                    <th>telephone</th>
+                                    <td>{{ region.adresse }}</td>
+                                </tr>
+                               
+                                
+                            </tbody>
+                        </table>
+                        <div style=" margin-bottom: 10px;">
+                            <a href="{{ path('app_region_index') }}" class=" btn btn-dark">back to list</a>
 
-    {{ include('region/_delete_form.html.twig') }}
+                            <a href="{{ path('app_region_edit', {'id': region.id}) }}" class=" btn btn-warning">edit</a>
+                        </div> 
+                        
+                        {{ include('region/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            <div>
+        </div>
     </div>
+</div>
 {% endblock %}

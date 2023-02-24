@@ -41,14 +41,13 @@ class AdminController extends AbstractController
 
 
 
-    #[Route('/tables', name: 'display_tables')]
-    public function indextables(): Response
-    {
-        return $this->render('admin/tables.html.twig' , [
-            'controller_name' => 'AdminController',
-        ]);
-    }
-   
+    // #[Route('/tables', name: 'display_tables')]
+    // public function indextables(): Response
+    // {
+    //     return $this->render('admin/tables.html.twig' , [
+    //         'controller_name' => 'AdminController',
+    //     ]);
+    // }
 
 
 
@@ -62,13 +61,13 @@ class AdminController extends AbstractController
 
 
 
-    #[Route('/notifications', name: 'display_notifications')]
-    public function indexnotifications(): Response
-    {
-        return $this->render('admin/notifications.html.twig' , [
-            'controller_name' => 'AdminController',
-        ]);
-    }
+    // #[Route('/notifications', name: 'display_notifications')]
+    // public function indexnotifications(): Response
+    // {
+    //     return $this->render('admin/notifications.html.twig' , [
+    //         'controller_name' => 'AdminController',
+    //     ]);
+    // }
 
 
 
@@ -91,5 +90,16 @@ class AdminController extends AbstractController
     
     }
     
+
+
+    
+    // #[Route('/Bilans', name: 'display_Bilans')]
+    // public function indexBilan(): Response
+    // {
+    //     return $this->render('admin/Bilans.html.twig' , [
+    //         'controller_name' => 'AdminController',
+    //     ]);
+    
+    // }
 }
 

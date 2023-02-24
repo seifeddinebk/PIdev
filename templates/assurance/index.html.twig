@@ -33,8 +33,8 @@
                 <td>{{ assurance.region }}</td>
                 <td>{{ assurance.region.adresse }}</td>
                 <td>
-                    <a href="{{ path('app_assurance_show', {'id': assurance.id}) }}">show</a>
-                    <a href="{{ path('app_assurance_edit', {'id': assurance.id}) }}">edit</a>
+                    <a href="{{ path('app_assurance_show', {'id': assurance.id}) }}" class="btn btn-warning text-dark px-3 mb-0 " data-toggle="tooltip" data-original-title="Edit user"> show </a>
+                    <a href="{{ path('app_assurance_edit', {'id': assurance.id}) }}"class="btn btn-danger text-gradient px-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">edit</a>
                 </td>
             </tr>
          {% else %}
@@ -45,6 +45,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_assurance_new') }}">Create new</a>
+    <a href="{{ path('app_assurance_new') }}"class="btn btn-success text-gradient px-3 mb-0">Create new</a>
     </div>
 {% endblock %}

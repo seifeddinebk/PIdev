@@ -1,10 +1,12 @@
+
 {%extends 'admin/Base.html.twig'%}
+
 
 
 
 {% block body %}
 <div style="margin-right:50px;margin-left:350px">
-<title>Region </title>
+<title>region </title>
     <h1>Region </h1>
 
     <table class="table">
@@ -12,7 +14,7 @@
             <tr>
                 <th>Id</th>
                 <th>Region</th>
-                <th>Adresse</th>
+                 <th>adresse</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,20 +23,22 @@
             <tr>
                 <td>{{ region.id }}</td>
                 <td>{{ region.region }}</td>
+              
                 <td>{{ region.adresse }}</td>
+               
                 <td>
-                    <a href="{{ path('app_region_show', {'id': region.id}) }}">show</a>
-                    <a href="{{ path('app_region_edit', {'id': region.id}) }}">edit</a>
+                    <a href="{{ path('app_region_show', {'id': region.id}) }}" class="btn btn-warning text-dark px-3 mb-0 " data-toggle="tooltip" data-original-title="Edit user"> show </a>
+                    <a href="{{ path('app_region_edit', {'id': region.id}) }}"class="btn btn-danger text-gradient px-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">edit</a>
                 </td>
             </tr>
-        {% else %}
+         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_region_new') }}">Create new</a>
+    <a href="{{ path('app_region_new') }}"class="btn btn-success text-gradient px-3 mb-0">Create new</a>
     </div>
 {% endblock %}

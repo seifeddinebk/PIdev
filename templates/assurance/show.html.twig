@@ -1,49 +1,56 @@
-
-
-
-{%extends 'admin/Base.html.twig'%}
-
+{% extends 'admin/Base.html.twig'%}
 
 {% block body %}
-<div style="margin-right:50px;margin-left:350px">
-<title>Assurance</title>
+
+
+<div style='margin-left: 25% ;'>
     <h1>Assurance</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ assurance.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ assurance.nom }}</td>
-            </tr>
-           
-            <tr>
-                <th>Telephone</th>
-                <td>{{ assurance.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ assurance.mail }}</td>
-            </tr>
-             <tr>
-                <th>Region</th>
-                <td>{{ assurance.region }}</td>
-            </tr>
-             <tr>
-                <th>adresse</th>
-                <td>{{ assurance.region.adresse }}</td>
-            </tr>
-            
-        </tbody>
-    </table>
+    <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 150px;">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <table class="card" >
+                            <tbody>
+                                <tr>
+                                    <th >Id</th>
+                                    <td >{{ assurance.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>nom</th>
+                                    <td>{{assurance.nom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>telephone</th>
+                                    <td>{{ assurance.telephone }}</td>
+                                </tr>
+                                <tr>
+                                    <th>E-mail</th>
+                                    <td>{{ assurance.mail }}</td>
+                                </tr>
+                                <tr>
+                                    <th>region</th>
+                                    <td>{{ assurance.region }}</td>
+                                </tr>
+                                <tr>
+                                    <th>adresse</th>
+                                    <td>{{ assurance.region.adresse  }}</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        <div style=" margin-bottom: 10px;">
+                            <a href="{{ path('app_assurance_index') }}" class=" btn btn-dark">back to list</a>
 
-    <a href="{{ path('app_assurance_index') }}">back to list</a>
-
-    <a href="{{ path('app_assurance_edit', {'id': assurance.id}) }}">edit</a>
-
-    {{ include('assurance/_delete_form.html.twig') }}
+                            <a href="{{ path('app_assurance_edit', {'id': assurance.id}) }}" class=" btn btn-warning">edit</a>
+                        </div> 
+                        
+                        {{ include('assurance/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            <div>
+        </div>
     </div>
+</div>
 {% endblock %}

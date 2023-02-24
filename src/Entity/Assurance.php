@@ -31,9 +31,12 @@ class Assurance
     #[ORM\Column(length: 255)]
     private ?string $mail = null;
 
+  
+    #[ORM\JoinColumn(onDelete:"CASCADE")]
     #[ORM\ManyToOne(inversedBy: 'id_assurance')]
     private ?Region $region = null;
 
+    #[Assert\NotBlank(message:"il est obligatoire de mettre la region")]
     #[ORM\ManyToOne(inversedBy: 'assurances')]
     private ?Region $Region = null;
 
