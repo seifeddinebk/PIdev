@@ -6,6 +6,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\RegionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Ignore;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RegionRepository::class)]
@@ -26,10 +27,10 @@ class Region
     #[Assert\NotBlank(message:"il est obligatoire d'ajouter une adresse")]
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
-
+    #[Ignore]
     #[ORM\OneToMany(mappedBy: 'region', targetEntity: Assurance::class)]
     private Collection $id_assurance;
-
+    #[Ignore]
     #[ORM\OneToMany(mappedBy: 'Region', targetEntity: Assurance::class)]
     private Collection $assurances;
 

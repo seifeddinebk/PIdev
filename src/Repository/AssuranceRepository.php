@@ -39,6 +39,14 @@ class AssuranceRepository extends ServiceEntityRepository
         }
     }
 
+    public function allAssurances()
+    {
+        return $this->createQueryBuilder('c')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     
 
 //    /**

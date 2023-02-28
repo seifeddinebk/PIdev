@@ -4,6 +4,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\AssuranceRepository;
+use Symfony\Component\Serializer\Annotation\Ignore;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AssuranceRepository::class)]
@@ -35,11 +36,13 @@ class Assurance
   
     #[ORM\JoinColumn(onDelete:"CASCADE")]
     #[ORM\ManyToOne(inversedBy: 'id_assurance')]
+    #[Ignore]
     private ?Region $region = null;
 
     
     #[Assert\NotBlank(message:"il est obligatoire de mettre la region")]
     #[ORM\ManyToOne(inversedBy: 'assurances')]
+    #[Ignore]
     private ?Region $Region = null;
 
     
