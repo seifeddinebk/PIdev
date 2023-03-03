@@ -43,6 +43,13 @@
 {{ form_errors(form.mail,{'attr':{'class':'text-danger'}})}}
 
 
+
+    {{ form_row(form.query) }}
+    {{ form_row(form.region) }}
+    {{ form_widget(form.submit) }}
+{{ form_end(form) }}
+
+
 <button class="btn">{{ button_label|default('Save') }}</button>
     </div>
             </div>

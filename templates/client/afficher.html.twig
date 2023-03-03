@@ -1,47 +1,83 @@
-
 {% extends 'client/base.html.twig' %}
 
-
+{% block stylesheets %}{% endblock %}
 
 
 {% block body %}
-<div style="margin-right:50px;margin-left:350px">
-<title>Assurance </title>
-    <h1>Assurance </h1>
+	<div id="map" style="height:400px"></div>
+	<div style="margin-right:50px;margin-left:350px">
+		<title>Assurance
+		</title>
+		<h1>Assurance
+		</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-              
-                <th>Nom</th>
-        
-                <th>Telephone</th>
-                <th>Mail</th>
-                <th>Region</th>
-                 <th>adresse</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-        {% for assurance in assurances %}
-            <tr>
-              
-                <td>{{ assurance.nom }}</td>
-              
-                <td>{{ assurance.telephone }}</td>
-                <td>{{ assurance.mail }}</td>
-                <td>{{ assurance.region }}</td>
-                <td>{{ assurance.region.adresse }}</td>
-               
-            </tr>
-         {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-      </table>
+		<table class="table">
+			<thead>
+				<tr>
 
-        
-    </div>
+					<th>Nom</th>
+
+					<th>Telephone</th>
+					<th>Mail</th>
+					<th>Region</th>
+					<th>adresse</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{% for assurance in assurances %}
+					<tr>
+
+						<td>{{ assurance.nom }}</td>
+
+						<td>{{ assurance.telephone }}</td>
+						<td>{{ assurance.mail }}</td>
+						<td>{{ assurance.region }}</td>
+						<td>{{ assurance.region.adresse }}</td>
+                           
+                           <td><a href="{{ path('app_reservation_chambre_show', {'id': assurance.id}) }}">show</a></td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+{{knp_pagination_render(assurances)}}
+
+		<form action="{{ path('app_assurance_afficher') }}" method="get">
+			<div class="form-group">
+				<input type="text" name="query" class="form-control" placeholder="Rechercher...">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Rechercher</button>
+		</form>
+
+
+	</div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+  <script>
+  $(document).ready(function() {
+    var mymap = L.map('map').setView([36.89978951867214, 10.189310040695085], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            maxZoom: 12
+        }).addTo(mymap);
+        L.marker([36.89978951867214, 10.189310040695085]).addTo(mymap)
+            .bindPopup("<b>Bonjour!</b><br />Voici notre localisation a tunis.").openPopup();
+            L.marker([35.779685, 10.815950]).addTo(mymap)
+            .bindPopup("<b>Bonjour!</b><br />Voici notre localisation a monastir.").openPopup();
+              L.marker([34.781770, 10.698139]).addTo(mymap)
+            .bindPopup("<b>Bonjour!</b><br />Voici notre localisation sfax.").openPopup();
+              L.marker([36.730160, 9.184014]).addTo(mymap)
+            .bindPopup("<b>Bonjour!</b><br />Voici notre localisation a beja .").openPopup();
+             L.marker([35.234215, 11.113648]).addTo(mymap)
+            .bindPopup("<b>Bonjour!</b><br />Voici notre localisation a chebba.").openPopup();
+            
+});
+  
+  </script>
 {% endblock %}

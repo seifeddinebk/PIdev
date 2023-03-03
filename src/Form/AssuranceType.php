@@ -16,6 +16,10 @@ class AssuranceType extends AbstractType
             ->add('telephone')
             ->add('mail')
             ->add('region')
+          
+ 
+
+
            
            
         ;
@@ -27,4 +31,7 @@ class AssuranceType extends AbstractType
             'data_class' => Assurance::class,
         ]);
     }
+
+
+    
 }

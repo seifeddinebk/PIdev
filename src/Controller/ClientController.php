@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Controller;
-
+use Dompdf\Dompdf;
 use App\Entity\Assurance;
 use App\Form\AssuranceType;
 use App\Repository\AssuranceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/Client')]
 class ClientController extends AbstractController
@@ -86,12 +88,85 @@ class ClientController extends AbstractController
         ]);
     }
     
-    #[Route('/afficher', name: 'app_assurance_afficher')]
-    public function afficher(AssuranceRepository $assuranceRepository): Response
+    /*  #[Route('/afficher', name: 'app_assurance_afficher')]
+   public function afficher(AssuranceRepository $assuranceRepository): Response
     {
         return $this->render('client/afficher.html.twig', [
             'assurances' => $assuranceRepository->findAll(),
         ]);
+        
+    }*/
+    #[Route('/afficher', name: 'app_assurance_afficher')]
+    public function afficher(Request $request, AssuranceRepository $assuranceRepository,PaginatorInterface $paginator): Response
+{
+    
+    $query = $request->query->get('query');
+    
+    if ($query) {
+        $donnees = $assuranceRepository->search($query);
+        $assurances = $paginator->paginate(
+            $donnees,
+            $request->query->getInt('page',1),
+            3
+        );
+    } else {
+        $donnees = $assuranceRepository->findAll();
+        $assurances = $paginator->paginate(
+            $donnees,
+            $request->query->getInt('page',1),
+            3
+        );
     }
+    return $this->render('client/afficher.html.twig', [
+        'assurances' => $assurances,
+    ]);
+}
+
+
+
+#[Route('/{id}', name: 'app_reservation_chambre_show', methods: ['GET'])]
+public function pdf(Request $request, AssuranceRepository $assuranceRepository, int $id): Response
+{
+    
+    $assurances = $this->getDoctrine()
+    ->getRepository(Assurance::class)
+    ->find($id);
+   
+
+    $html= $this->render('client/show.html.twig', [
+        'assurances' => $assurances,
+    ]);
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($html);
+
+    // (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+
+    // Render the HTML as PDF
+    $dompdf->render();
+
+    // Output the generated PDF to the browser
+    $output = $dompdf->output();
+    $response = new Response($output);
+    $response->headers->set('Content-Type', 'application/pdf');
+
+    return $response;
+       
+    }
+/*#[Route('/afficher', name: 'app_assurance_afficher')]
+public function findByNomAndRegion(string $nom, string $region)
+{
+    $qb = $this->createQueryBuilder('assurance')
+        ->leftJoin('assurance.region', 'region')
+        ->where('assurance.nom LIKE :nom')
+        ->andWhere('region.region LIKE :region')
+        ->setParameter('nom', '%' . $nom . '%')
+        ->setParameter('region', '%' . $region . '%')
+        ->getQuery();
+
+    return $qb->execute();
+}*/
+
+
 
 }

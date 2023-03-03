@@ -47,6 +47,38 @@ class AssuranceRepository extends ServiceEntityRepository
             ;
     }
 
+    public function search(string $query): array
+{
+    $entityManager = $this->getEntityManager();
+
+    $queryBuilder = $entityManager->createQueryBuilder();
+    $queryBuilder->select('a')
+        ->from(Assurance::class, 'a')
+        ->where('a.nom LIKE :query')
+        ->setParameter('query', '%'.$query.'%');
+
+    $query = $queryBuilder->getQuery();
+
+    return $query->getResult();
+}
+
+
+public function research(string $query): array
+{
+    $entityManager = $this->getEntityManager();
+
+    $queryBuilder = $entityManager->createQueryBuilder();
+    $queryBuilder->select('a')
+        ->from(Assurance::class, 'a')
+        ->where('a.region LIKE :query')
+        ->setParameter('query', '%'.$query.'%');
+
+    $query = $queryBuilder->getQuery();
+
+    return $query->getResult();
+}
+
+
     
 
 //    /**

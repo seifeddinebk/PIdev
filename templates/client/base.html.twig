@@ -11,13 +11,16 @@
         <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
 
-        {% block stylesheets %}
+        
              <link rel="stylesheet" href="{{asset('assets/client/css/plugins.css')}}">
              <link rel="stylesheet" href="{{asset('assets/client/quform/css/base.css')}}">
              <link href="{{asset('assets/client/css/styles.css')}}" rel="stylesheet">
-        {% endblock %}
+              <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+        {% block stylesheets %}{% endblock %}
 
-        {% block javascripts %}
+        
             <script src="{{asset('assets/client/js/jquery.min.js')}}"></script>
             <script src="{{asset('assets/client/js/popper.min.js')}}"></script>
             <script src="{{asset('assets/client/js/bootstrap.min.js')}}"></script>
@@ -26,9 +29,12 @@
             <script src="{{asset('assets/client/js/main.js')}}"></script>
             <script src="{{asset('assets/client/quform/js/plugins.js')}}"></script>
             <script src="{{asset('assets/client/quform/js/scripts.js')}}"></script>
+            <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
 
-
-
+{% block javascripts %}
         {% endblock %}
     </head>
     <body>
