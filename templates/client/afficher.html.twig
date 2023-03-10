@@ -35,7 +35,7 @@
 						<td>{{ assurance.region }}</td>
 						<td>{{ assurance.region.adresse }}</td>
                            
-                           <td><a href="{{ path('app_reservation_chambre_show', {'id': assurance.id}) }}">show</a></td>
+                           <td><a href="{{ path('app_pdf', {'id': assurance.id}) }}">show</a></td>
 					</tr>
 				{% else %}
 					<tr>

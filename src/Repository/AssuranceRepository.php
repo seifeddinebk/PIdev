@@ -56,7 +56,6 @@ class AssuranceRepository extends ServiceEntityRepository
         ->from(Assurance::class, 'a')
         ->where('a.nom LIKE :query')
         ->setParameter('query', '%'.$query.'%');
-
     $query = $queryBuilder->getQuery();
 
     return $query->getResult();

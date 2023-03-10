@@ -124,7 +124,7 @@ class ClientController extends AbstractController
 
 
 
-#[Route('/{id}', name: 'app_reservation_chambre_show', methods: ['GET'])]
+#[Route('/{id}', name: 'app_pdf', methods: ['GET'])]
 public function pdf(Request $request, AssuranceRepository $assuranceRepository, int $id): Response
 {
     
